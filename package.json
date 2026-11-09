@@ -1,0 +1,13 @@
+{
+  "name": "crush-your-connections",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Chrome extension that solves LinkedIn Zip and Queens locally when you click Crush.",
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/zip/solver.test.mjs tests/zip/board.test.mjs tests/queens/solver.test.mjs tests/queens/board.test.mjs tests/queens/fixture-flow.test.mjs tests/detect.test.mjs tests/status.test.mjs tests/overlay.test.mjs tests/popup-bridge.test.mjs tests/debug.test.mjs"
+  },
+  "devDependencies": {
+    "jsdom": "^27.0.0"
+  }
+}

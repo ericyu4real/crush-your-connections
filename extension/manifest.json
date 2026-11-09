@@ -1,0 +1,72 @@
+{
+  "manifest_version": 3,
+  "name": "Crush Your Connections",
+  "version": "1.0.0",
+  "description": "Detect a LinkedIn Zip or Queens board from the URL and fill it when you click Crush.",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_title": "Crush Your Connections",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "permissions": ["activeTab", "scripting"],
+  "host_permissions": [
+    "https://www.linkedin.com/games/*",
+    "https://linkedin.com/games/*",
+    "https://*.linkedin.com/games/*",
+    "http://127.0.0.1/*",
+    "http://localhost/*"
+  ],
+  "background": {
+    "service_worker": "service-worker.js"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["*.js", "zip/*.js", "queens/*.js", "logo.svg", "icons/*.png"],
+      "matches": [
+        "https://www.linkedin.com/*",
+        "https://linkedin.com/*",
+        "https://*.linkedin.com/*",
+        "http://127.0.0.1/*",
+        "http://localhost/*"
+      ]
+    }
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.linkedin.com/games/*",
+        "https://linkedin.com/games/*",
+        "https://*.linkedin.com/games/*",
+        "http://127.0.0.1/*",
+        "http://localhost/*"
+      ],
+      "js": ["page.js"],
+      "type": "module",
+      "run_at": "document_idle",
+      "world": "MAIN"
+    },
+    {
+      "matches": [
+        "https://www.linkedin.com/games/*",
+        "https://linkedin.com/games/*",
+        "https://*.linkedin.com/games/*",
+        "http://127.0.0.1/*",
+        "http://localhost/*"
+      ],
+      "js": ["content.js"],
+      "type": "module",
+      "run_at": "document_idle"
+    }
+  ]
+}
